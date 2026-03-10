@@ -1,0 +1,89 @@
+<!DOCTYPE html><html>
+<head><title>Marvel Universe Trailer Search</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#000;
+color:white;
+text-align:center;
+}
+
+header{
+background:#e62429;
+padding:20px;
+font-size:32px;
+font-weight:bold;
+letter-spacing:2px;
+}
+
+.search{
+margin:30px;
+}
+
+input{
+padding:12px;
+width:60%;
+font-size:16px;
+border:none;
+border-radius:6px;
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+border:none;
+background:#e62429;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+.poster{
+margin-top:20px;
+}
+
+.poster img{
+width:200px;
+border-radius:10px;
+}
+
+iframe{
+margin-top:30px;
+width:90%;
+height:400px;
+border:none;
+}
+
+</style></head><body><header>
+MARVEL UNIVERSE
+</header><div class="search"><input id="movie" placeholder="Search Marvel Movie"><button onclick="searchMovie()">Search</button>
+
+</div><div class="poster" id="poster"></div><iframe id="trailer"></iframe><script>
+
+const posters={
+"iron man":"https://m.media-amazon.com/images/I/81D+KJkO4SL._AC_SY679_.jpg",
+"avengers endgame":"https://m.media-amazon.com/images/I/81ExhpBEbHL._AC_SY679_.jpg",
+"thor ragnarok":"https://m.media-amazon.com/images/I/91BqVgFqTtL._AC_SY679_.jpg",
+"spider man no way home":"https://m.media-amazon.com/images/I/81VStYnDGrL._AC_SY679_.jpg"
+};
+
+function searchMovie(){
+
+var movie=document.getElementById("movie").value.toLowerCase();
+
+var query=movie+" marvel official trailer";
+
+var youtube="https://www.youtube.com/embed?listType=search&list="+encodeURIComponent(query);
+
+document.getElementById("trailer").src=youtube;
+
+if(posters[movie]){
+document.getElementById("poster").innerHTML="<img src='"+posters[movie]+"'>";
+}else{
+document.getElementById("poster").innerHTML="";
+}
+
+}
+
+</script></body></html>
